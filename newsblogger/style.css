@@ -585,172 +585,6 @@ body.newsblogger #wrapper .wp-block-latest-posts__featured-image.i_effect8,
   overflow: hidden;
 }
 
-.woocommerce-thankyou-order-received{
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 50px;
-    font-family: "Poppins", Sans-serif;
-    font-weight: 700;
-    letter-spacing: 1.1px;
-    color: #26434B;
-    text-transform: uppercase;
-    line-height: 28px;
-}
-
-.asaas-pix-copy-to-clipboard{
-    display: block;
-    width: 100%;
-    margin-top: 30px;
-}
-
-.asaas-pix-instructions__list{
-    font-size: 28px !important;
-}
-
-.woocommerce-order-details__asaas-pix-button{
-    text-align: center;
-    font-size: 17px !important;
-    width: 50%;
-    margin-top: 15px !important;
-    padding: 14px 26px !important;
-    border-radius: 10px !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    box-shadow: 0 6px 18px rgba(0, 123, 255, .18) !important;
-    background: linear-gradient(90deg, #00b4ff, #007bff) !important;
-    color: #fff !important;
-}
-
-.boleto-ty{
-    font-size: 30px;
-}
-
-.boleto-ty li{
-    width: 100%;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.elementor-706 .elementor-element.elementor-element-bc4cc00{
- min-height: 100vh;    
-}
-
-.woocommerce-order-details{
-    text-align: center;
-}
-
-.woocommerce ul.order_details{
-    justify-content: center;
-    display: flex;
-}
-
-@media (max-width: 768px) {
-  .woocommerce-order-overview {
-    display: flex;
-    flex-direction: column; /* empilha os itens */
-    align-items: flex-start; /* alinha à esquerda */
-    gap: 10px;
-  }
-  
-  .woocommerce-thankyou-order-received{
-      margin-bottom: 20px;
-  }
-
-  .woocommerce-order-overview li {
-    width: 100%; /* cada item ocupa a largura toda */
-    text-align: left; /* texto alinhado */
-    border-right: none !important; /* remove divisórias verticais se houver */
-    border-bottom: 1px solid #eee; /* adiciona divisória horizontal */
-    padding-bottom: 8px;
-    text-align: center;
-    font-size: 12px !important;
-  }
-
-  .woocommerce-order-overview li:last-child {
-    border-bottom: none; /* remove a borda do último item */
-  }
-
-  /* Centralizar o botão no mobile */
-  .woocommerce-order .button {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .asaas-pix-instructions__list li, .asaas-pix-instructions{
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0px !important;
-  }
-  
-    .asaas-pix-instructions img{
-        margin: 30px auto 0;
-    }
-	
-	.e-checkout__container{
-		display: block;
-	}
-	
-	.checkout .col-1, .checkout .woocommerce-additional-fields, .checkout .e-checkout__order_review, .checkout .e-coupon-box, .checkout #payment{
-		padding: 15px !important;
-	}
-	
-	.checkout #order_review{
-		padding: 0 !important;
-    	margin-top: 15px !important;
-	}
-	
-	.checkout h3{
-		margin: 0 !important;
-	}
-	
-	.checkout label, .checkout input, .checkout span{
-		font-size: 18px !important;
-	}
-	
-	.checkout #payment label, .checkout th, .checkout p, .checkout textarea{
-		font-size: 16px !important;
-	}
-	
-	.checkout .product-total{
-		padding: 0px !important;
-	}
-	
-	.elementor-widget-woocommerce-checkout-page .e-checkout__container{
-		grid-template-columns: 100% !important;
-	}
-	
-	.select2 .select2-container .select2-container--default{
-		width: 100% !important;
-	}
-	.cart_item{
-		width: 120% !important;	
-	}
-	.woocommerce-checkout-review-order-table tfoot tr:first-child, .woocommerce-checkout-review-order-table tfoot tr:last-child  {
-		width: 100% !important;
-    display: block !important;
-	}
-	.custom-shipping-block{
-		width: 120% !important;	
-	}
-	
-	.asaas-pix-instructions{
-		flex-direction: column;
-		width: 100%;
-		
-		img{
-			margin: 0 auto !important;
-		}
-	}
-	
-	.asaas-pix-instructions__list{
-		display:none;
-	}
-}
-
-.ul-pix{
-    display: block !important;
-}
-
 .banner-ozemix{
 	padding: 0px 10px 20px;
 	
@@ -760,4 +594,16 @@ body.newsblogger #wrapper .wp-block-latest-posts__featured-image.i_effect8,
     object-fit: cover;
     object-position: center;
 	}
+}
+
+.fc-home-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 30px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+@media (max-width: 991px) {
+  .fc-home-layout { grid-template-columns: 1fr; }
 }

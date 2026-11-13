@@ -27,12 +27,3 @@
     });
         }); 
 })(jQuery); 
-
-document.addEventListener("DOMContentLoaded", function () {
-  const el = document.querySelector('.copyright-section');
-  if (el) {
-    el.innerHTML = `
-      <a href="#">Formula Corpo</a> 2025 | Todos os direitos reservados
-    `;
-  }
-});

@@ -29,6 +29,11 @@ require NEWSBLOGGER_CHILD_TEMPLATE_DIR . '/inc/theme-color/custom-color.php';
 if ( file_exists( NEWSBLOGGER_CHILD_TEMPLATE_DIR . 'inc/fc-tools.php' ) ) {
     require_once NEWSBLOGGER_CHILD_TEMPLATE_DIR . 'inc/fc-tools.php';
 }
+// Cabeçalho, banner e destaques (Fase 2). Para reverter, apague estas 3 linhas.
+if ( file_exists( NEWSBLOGGER_CHILD_TEMPLATE_DIR . 'inc/fc-home.php' ) ) {
+    require_once NEWSBLOGGER_CHILD_TEMPLATE_DIR . 'inc/fc-home.php';
+}
+
 function newsblogger_load_customizer_image_radio_control() {
     // Check if the class doesn't already exist
     if ( ! class_exists( 'NewsBlogger_Img_Radio_Control' ) ) {
@@ -576,3 +581,65 @@ function newsblogger_enqueue_plugin_installer_script() {
         'nonce' => wp_create_nonce('plugin_installer_nonce')
     ));
 }
+
+// Desativa a barra "Em Destaque" abaixo do banner
+add_filter( 'theme_mod_newscrunch_enable_front_highlight', '__return_false' );
+
+// Rodapé personalizado
+add_action( 'wp_footer', function () { ?>
+<footer class="fc-footer">
+	<div class="fc-footer-top">
+		<a class="fc-footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<?php if ( has_custom_logo() ) { echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'medium' ); } else { bloginfo( 'name' ); } ?>
+			<small>SAÚDE · NUTRIÇÃO · BEM-ESTAR</small>
+		</a>
+		<nav class="fc-footer-links">
+			<a href="#">Sobre nós</a>
+			<a href="#">Contato</a>
+			<a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">Política de Privacidade</a>
+			<a href="#">Termos de Uso</a>
+			<a href="#">Política de Cookies</a>
+		</nav>
+		<div class="fc-social">
+			<a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+			<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+			<a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg></a>
+			<a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M11 8c3-1 5 1 4 4s-3 2-3 2l-2 6"/></svg></a>
+		</div>
+	</div>
+	<div class="fc-footer-bottom">© <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. Todos os direitos reservados.</div>
+</footer>
+<?php }, 1 );
+
+add_action( 'widgets_init', function () {
+	register_sidebar( array( 'name' => 'FC – Anúncio do artigo', 'id' => 'fc-ads',
+		'before_widget' => '<div>', 'after_widget' => '</div>' ) );
+} );
+
+/* Logo sem H1 (o único H1 é o título do artigo) */
+function newscrunch_add_logo() {
+	$dark = get_theme_mod( 'dark_header_logo' );
+	if ( ! $dark && has_custom_logo() ) {
+		$img  = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+		$dark = $img ? $img[0] : '';
+	}
+	?>
+	<div class="spnc-header">
+		<?php if ( has_custom_logo() ) the_custom_logo(); ?>
+		<?php if ( $dark ) : ?>
+			<div class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="dark-custom-logo-link" rel="home">
+					<img width="220" height="120" src="<?php echo esc_url( $dark ); ?>" class="dark-custom-logo" alt="<?php bloginfo( 'name' ); ?>" style="display:none;">
+				</a>
+			</div>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
+add_filter( 'the_content', function ( $c ) {
+	if ( ! is_singular( 'post' ) ) return $c;
+	return preg_replace( [ '/<h1(\s|>)/i', '/<\/h1>/i' ], [ '<h2$1', '</h2>' ], $c );
+}, 20 );
+
+add_action( 'newscrunch_header_logo', 'newscrunch_add_logo' );

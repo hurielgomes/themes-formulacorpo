@@ -101,6 +101,6 @@
 </header>
 <!-- End Header Sidebar-->
 <div class="spnc-container banner-ozemix">
-<a href="https://formulacorpo.com.br/ozemix"><img src="https://formulacorpo.com.br/wp-content/uploads/2025/10/comece-agora-o-seu-emagrecimento-1.png" alt="Promoção Compre Agora o Ozemix"></a>
+<a href="https://bionutriclinica.com.br/ozemix"><img src="https://formulacorpo.com.br/wp-content/uploads/2025/10/comece-agora-o-seu-emagrecimento-1.png" alt="Promoção Compre Agora o Ozemix"></a>
 </div>
 <div class="clrfix"></div>
